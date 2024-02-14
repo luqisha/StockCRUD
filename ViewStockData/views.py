@@ -1,16 +1,16 @@
 from django.shortcuts import render
 from django.conf import settings
-from .models import jsonModel
+from .models import jsonModel, sqlModel
 import json
 import os
 
-def home(request):
+def json_model_view(request):
 
     if jsonModel.objects.all().count() == 0:
         
-        file_dir = os.path.join(settings.BASE_DIR, 'data', 'stock_market_data.json')
+        file_path = os.path.join(settings.BASE_DIR, 'data', 'stock_market_data.json')
         
-        with open(file_dir) as f:
+        with open(file_path) as f:
             data = json.load(f)
             for item in data:
                 jsonModel.objects.create(
@@ -22,5 +22,11 @@ def home(request):
                     close= item['close'],
                     volume= int(item['volume'].replace(',', '')),
                 )
-    
-    return render(request, 'home.html', {'stocks': jsonModel.objects.all()})
+    stock_data = jsonModel.objects.all()
+    return render(request, 'home.html', {'stocks': stock_data})
+
+
+
+def sql_model_view(request):
+    stock_data = sqlModel.objects.all()
+    return render(request, 'home.html', {'stocks': stock_data})

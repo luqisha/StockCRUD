@@ -21,5 +21,7 @@ from ViewStockData import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home' ),
+    path('', views.sql_model_view, name='home' ),
+    path('jsonModel/', views.json_model_view, name='home' ),
+    path('sqlModel/', views.sql_model_view, name='home' ),
 ]
