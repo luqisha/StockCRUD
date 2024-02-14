@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-4 mb-3 text-center">Stock Data</h1>
+        
+        <table class="table text-center">
+            <thead class="thead">
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Trade Code</th>
+                    <th scope="col">High</th>
+                    <th scope="col">Low</th>
+                    <th scope="col">Open</th>
+                    <th scope="col">Close</th>
+                    <th scope="col">Volume</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock.date }}</td>
+                    <td>{{ stock.trade_code }}</td>
+                    <td>{{ stock.high }}</td>
+                    <td>{{ stock.low }}</td>
+                    <td>{{ stock.open }}</td>
+                    <td>{{ stock.close }}</td>
+                    <td>{{ stock.volume }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
