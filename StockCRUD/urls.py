@@ -24,4 +24,5 @@ urlpatterns = [
     path('', views.sql_model_view, name='home' ),
     path('jsonModel/', views.json_model_view, name='home' ),
     path('sqlModel/', views.sql_model_view, name='home' ),
+    path('sqlModel/<str:trade_code>', views.sql_model_view, name='home' ),
 ]
